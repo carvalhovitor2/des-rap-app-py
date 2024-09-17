@@ -61,7 +61,7 @@ O banco de dados **PostgreSQL** utilizado no projeto é chamado `estacio_python`
 
 - **DB Name**: `estacio_python`
 - **DB User**: `postgres`
-- **DB Password**: `postgres`
+- **DB Password**: `postgres` -> no caso do uso real, troque as credenciais.
 - **Porta**: `5432`
 
 ### Comandos de Gerenciamento do Banco de Dados:
