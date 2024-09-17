@@ -33,8 +33,8 @@ O projeto está organizado da seguinte forma:
 ### 1. Clonar o repositório:
 
 ```bash
-git clone <seu-repositorio-url>
-cd <seu-repositorio>
+git clone git@github.com:carvalhovitor2/des-rap-app-py.git
+cd des-rap-app-py
 ```
 
 ### 2. Criar o ambiente virtual, instalar dependências e configurar o banco de dados:
