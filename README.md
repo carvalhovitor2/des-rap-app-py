@@ -8,7 +8,7 @@ Este sistema foi desenvolvido para gerenciar os pedidos em um trailer de vendas 
 
 O projeto está organizado da seguinte forma:
 
-\```
+```
 ├── Makefile              # Automação de tarefas
 ├── README.md             # Instruções do projeto
 ├── app                   # Diretório da aplicação
@@ -17,7 +17,7 @@ O projeto está organizado da seguinte forma:
 │   ├── main.py           # Ponto de entrada da aplicação (interface gráfica)
 │   ├── models.py         # Definição dos modelos de dados (SQLAlchemy)
 ├── requirements.txt      # Dependências do projeto
-\```
+```
 
 ## Dependências
 
@@ -32,28 +32,28 @@ O projeto está organizado da seguinte forma:
 
 ### 1. Clonar o repositório:
 
-\```bash
+```bash
 git clone <seu-repositorio-url>
 cd <seu-repositorio>
-\```
+```
 
 ### 2. Criar o ambiente virtual, instalar dependências e configurar o banco de dados:
 
-\```bash
+```bash
 make install
-\```
+```
 
 ### 3. Ativar o ambiente virtual:
 
-\```bash
+```bash
 source venv/bin/activate   # Para Windows: venv\Scripts\activate
-\```
+```
 
 ### 4. Executar a aplicação:
 
-\```bash
+```bash
 python -m app.main
-\```
+```
 
 ## Estrutura do Banco de Dados
 
@@ -67,28 +67,28 @@ O banco de dados **PostgreSQL** utilizado no projeto é chamado `estacio_python`
 ### Comandos de Gerenciamento do Banco de Dados:
 
 - **Criar/Iniciar o Banco de Dados**:
-  \```bash
+  ```bash
   make install
-  \```
+  ```
 
 - **Remover o Banco de Dados e volumes**:
-  \```bash
+  ```bash
   make clean
-  \```
+  ```
 
 ## Limpeza e Remoção
 
 Para remover o ambiente virtual e o banco de dados:
 
 1. Desativar o ambiente virtual:
-   \```bash
+   ```bash
    deactivate
-   \```
+   ```
 
 2. Limpar a instalação e remover o container e volumes do banco de dados:
-   \```bash
+   ```bash
    make clean
-   \```
+   ```
 
 ## Uso da Aplicação
 
