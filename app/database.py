@@ -10,7 +10,7 @@ DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/estacio_python'
 engine = create_engine(DATABASE_URL)
 
 # Create a local session for database transactions
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=True, bind=engine)
 
 # Function to initialize the database (create tables)
 def init_db():

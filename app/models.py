@@ -1,31 +1,25 @@
-# app/models.py
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Float, Boolean, create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
-# Tabela associativa entre pedidos e pratos (pedido_prato)
-pedido_prato = Table(
-    'pedido_prato', Base.metadata,
-    Column('pedido_id', ForeignKey('pedidos.id'), primary_key=True),
-    Column('prato_id', ForeignKey('pratos.id'), primary_key=True),
-    Column('quantidade', Integer, nullable=False)
-)
-
-# Modelo de Tabela 'Pratos'
-class Prato(Base):
-    __tablename__ = 'pratos'
+class Item(Base):
+    __tablename__ = 'items'
     
     id = Column(Integer, primary_key=True)
-    nome = Column(String, nullable=False)
-    descricao = Column(String, nullable=False)
+    nome = Column(String(30), nullable=False)
+    descricao = Column(String(120), nullable=False)
     preco = Column(Float, nullable=False)
+    tipo = Column(String(10), nullable=False)
 
-# Modelo de Tabela 'Pedidos'
 class Pedido(Base):
     __tablename__ = 'pedidos'
     
     id = Column(Integer, primary_key=True)
     valor_total = Column(Float, nullable=False)
-    pratos = relationship('Prato', secondary=pedido_prato, backref='pedidos')
+    entregue = Column(Boolean, default=False)
+
+engine = create_engine('sqlite:///foodtruck.db')
+Base.metadata.create_all(engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

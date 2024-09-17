@@ -18,7 +18,7 @@ install: venv
 	$(VENV)/bin/pip install --upgrade pip
 	$(VENV)/bin/pip install -r $(REQUIREMENTS)
 	@echo "Dependencies installed."
-	make db_setup
+	$(MAKE) db_setup
 
 # Set up the PostgreSQL database using Docker
 db_setup:
@@ -31,18 +31,18 @@ db_setup:
 		-d postgres:latest
 	@echo "PostgreSQL container started."
 
-# Remove the database container
+# Remove the database container and volumes
 db_remove:
 	@echo "Stopping and removing the database container..."
 	docker stop $(DB_CONTAINER_NAME)
-	docker rm $(DB_CONTAINER_NAME)
-	@echo "Database container removed."
+	docker rm -v $(DB_CONTAINER_NAME)  # Remove associated volumes as well
+	rm -rf foodtruck.db
+	@echo "Database container and volumes removed."
 
 # Clean up environment
-clean:
+clean: db_remove
 	rm -rf $(VENV)
 	@echo "Virtual environment removed."
-	make db_remove
 
 # Activate the virtual environment (reminder only)
 activate:
@@ -51,4 +51,3 @@ activate:
 # Deactivate the virtual environment (reminder only)
 deactivate:
 	@echo "To deactivate the virtual environment, run: deactivate"
-
